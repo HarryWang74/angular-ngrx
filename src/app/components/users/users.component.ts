@@ -1,25 +1,29 @@
-import { GetUsers } from './../../store/actions/user.actions';
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
-import { IAppState } from '../../store/state/app.state';
-import { selectUserList } from '../../store/selectors/user.selector';
-import { Router } from '@angular/router';
+import { IUser } from '../../models/user.interface';
 
 @Component({
+  selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
-  users$ = this._store.pipe(select(selectUserList));
+export class UsersComponent implements OnInit, OnChanges {
+  @Input()
+  users: IUser[];
+  @Output()
+  userSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor(private _store: Store<IAppState>, private _router: Router) {}
+  constructor() {}
 
-  ngOnInit() {
-    this._store.dispatch(new GetUsers());
+  ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges){
+    if(changes.users){
+      console.log(changes.users);
+    }
   }
 
   navigateToUser(id: number) {
-    this._router.navigate(['user', id]);
+    this.userSelected.emit(id);
   }
 }
