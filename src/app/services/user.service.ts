@@ -13,7 +13,5 @@ export class UserService {
 
   getUsers(): Observable<IUserHttp> {
     return this._http.get<IUserHttp>('http://localhost:3000/data');
-    console.log(this.usersUrl);
-    // return this._http.get<IUserHttp>(this.usersUrl);
   }
 }
