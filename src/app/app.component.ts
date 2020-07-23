@@ -13,7 +13,6 @@ import { selectConfig } from './store/selectors/config.selector';
 export class AppComponent implements OnInit {
   title = 'angular-ngrx';
   config$ = this._store.pipe(select(selectConfig));
-
   constructor(private _store: Store<IAppState>) {}
 
   ngOnInit() {

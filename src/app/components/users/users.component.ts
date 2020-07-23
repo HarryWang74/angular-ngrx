@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 import { IUser } from '../../models/user.interface';
 
@@ -7,7 +7,7 @@ import { IUser } from '../../models/user.interface';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnChanges {
   @Input()
   users: IUser[];
   @Output()
@@ -16,6 +16,12 @@ export class UsersComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges){
+    if(changes.users){
+      console.log(changes.users);
+    }
+  }
 
   navigateToUser(id: number) {
     this.userSelected.emit(id);

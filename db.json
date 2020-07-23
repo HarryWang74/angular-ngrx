@@ -1,0 +1,24 @@
+{
+  "data":{
+    "users": [
+      {
+        "id": 1,
+        "name": "1",
+        "cardNumber": "XXXX-XXXX-XXXX-4321",
+        "cardType": "Visa"
+      },
+      {
+        "id": 2,
+        "name": "2",
+        "cardNumber": "XXXX-XXXX-XXXX-1369",
+        "cardType": "Master"
+      },
+      {
+        "id": 3,
+        "name": "3",
+        "cardNumber": "XXXX-XXXX-XXXX-8888",
+        "cardType": "Visa"
+      }
+    ]
+  }
+}
